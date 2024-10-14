@@ -7,8 +7,7 @@ if (number == 5)
 	std::cout << "The number is 5" << std::endl;
 	return;
 	}
-else
-	std::cout << "The number is not 5" << std::endl;
+std::cout << "The number is not 5" << std::endl;
 	
 	
 if (number % 2 == 1)
@@ -16,8 +15,7 @@ if (number % 2 == 1)
 	std::cout << "The number is not divisible by 2" << std::endl;
 	return;
 	}
-else
-	std::cout << "The number is divisible by 2" << std::endl;
+std::cout << "The number is divisible by 2" << std::endl;
 	
 	
 if (number == 6)
