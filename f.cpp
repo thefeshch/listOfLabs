@@ -1,1 +1,0 @@
-static int hello(int number){return number + 1;}

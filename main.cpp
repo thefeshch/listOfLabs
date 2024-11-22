@@ -1,22 +1,30 @@
 #include <iostream>
+#include "HeapInt.h"
 
 using namespace std;
 
-//Simple example
+void swap(HeapInt& a, HeapInt& b) {
+    HeapInt temp = std::move(b);
+    b = std::move(a);
+    a = std::move(temp);
+}
 
-//int hello(int number){return 2;}
-//
-//int main()
-//{
-//	cout<< hello(1) << endl;
-//}
-
-
-
-//Two files
-static int hello(int number){return number + 2;}
+void constructors()
+{
+    HeapInt a{5}; // 8
+    HeapInt b{a}; // 9
+    HeapInt c{std::move(a)}; // 10
+    HeapInt d = b; // 11
+    HeapInt e = std::move(b); // 12
+    d = std::move(c); // 13
+    d = e; // 14
+	HeapInt f{1};
+    swap(f, d); // 15     1, 5 -> 5, 1
+    cout << "f: " << f.asRef() << endl;
+    cout << "d: " << d.asRef() << endl;
+}
 
 int main()
 {
-	cout<< hello(1) << endl;
+    constructors();
 }
