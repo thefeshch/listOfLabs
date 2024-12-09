@@ -1,11 +1,10 @@
-#ifndef VECTOR2_H
-#define VECTOR2_H
+#pragma once
 
 #include <iostream>
 
 struct Vector2 {
     float x;
-	float y;
+    float y;
 
     bool operator==(const Vector2& other) const;
     Vector2& operator+=(const Vector2& other);
@@ -24,5 +23,3 @@ Vector2 operator*(const Vector2& v, float a);
 Vector2 operator/(const Vector2& v, float a);
 
 std::ostream& operator<<(std::ostream& ostr, const Vector2& v);
-
-#endif 
