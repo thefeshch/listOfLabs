@@ -64,7 +64,7 @@ int main()
     test4();
     test5();
 
-    std::cout << "All tests passed!" << std::endl;
+    std::cout << "All good" << std::endl;
 
     return 0;
 }

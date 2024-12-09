@@ -3,18 +3,9 @@
 #include <cstdlib>
 #include <cstring>
 
-static void resizeArray(DynamicArray* array, int newCapacity)
-{
-    int* newData = (int*)std::malloc(newCapacity * sizeof(int));
-    std::memcpy(newData, array->data, array->length * sizeof(int));
-    std::free(array->data);
-    array->data = newData;
-    array->capacity = newCapacity;
-}
-
 DynamicArray createDynamicArrayWithCapacity(int capacity)
 {
-    assert(capacity > 0);
+    assert(capacity > 0); 
     DynamicArray array;
     array.data = (int*)std::malloc(capacity * sizeof(int));
     array.length = 0;
@@ -24,7 +15,21 @@ DynamicArray createDynamicArrayWithCapacity(int capacity)
 
 DynamicArray createDynamicArray()
 {
-    return createDynamicArrayWithCapacity(4);
+	DynamicArray array;
+    array.data = (int*)std::malloc(capacity * sizeof(int));
+    array.length = 0;
+    array.capacity = 4;
+    return array;
+    //return createDynamicArrayWithCapacity(4);
+}
+
+static void resizeArray(DynamicArray* array, int newCapacity)
+{
+    int* newData = (int*)std::malloc(newCapacity * sizeof(int));
+    std::memcpy(newData, array->data, array->length * sizeof(int));
+    std::free(array->data);
+    array->data = newData;
+    array->capacity = newCapacity;
 }
 
 void addElementToArray(DynamicArray* array, int value)
@@ -33,12 +38,14 @@ void addElementToArray(DynamicArray* array, int value)
     {
         resizeArray(array, array->capacity * 2);
     }
-    array->data[array->length++] = value;
+    array->data[array->length] = value;
+	array->length++;
 }
+
 
 int getElementAtIndex(const DynamicArray* array, int index)
 {
-    assert(index >= 0 && index < array->length);
+    assert(index < array->length && index >= 0);
     return array->data[index];
 }
 
